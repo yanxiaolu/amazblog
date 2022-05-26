@@ -1,0 +1,34 @@
+﻿<Properties StartupConfiguration="{3FB0DDC6-3E99-4D5B-ABDA-2BB441979654}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.Console/Program.cs">
+    <Files>
+      <File FileName="Share/Class1.cs" Line="15" Column="1" />
+      <File FileName="Share/Posts.cs" Line="15" Column="10" />
+      <File FileName="Infrastructure/Class1.cs" Line="18" Column="51" />
+      <File FileName="AmazBlog.Console/Program.cs" Line="23" Column="2" />
+      <File FileName="Infrastructure/Migrations/20220525072737_InitialCreate.cs" Line="48" Column="40" />
+      <File FileName="Infrastructure/Migrations/20220525095159_InitialCreate0525.cs" Line="1" Column="1" />
+      <File FileName="Infrastructure/Migrations/20220525095159_InitialCreate0525.Designer.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="amazBlog" expanded="True">
+            <Node name="AmazBlog.Console" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+            <Node name="AmazBlog.Share" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+</Properties>
