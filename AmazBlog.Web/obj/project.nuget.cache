@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "KKrG1ofd1XVuawBIzEi4bjvE7BaWP8EBTor0rCT1d3iC2tYhIoLgtgi01cgy/1IuIkOrhrAq+rt0Msh13zQtgw==",
+  "dgSpecHash": "go+jcmq70mCyGTv7294PaKv3CUmq23ZRz2cR7QEO2KSlfRBr6XlYZ+q6bqIQ7tJ06/9U6yDKnjbFitPNWwVUZg==",
   "success": true,
   "projectFilePath": "/Users/yanxl/Code/amazBlog/AmazBlog.Web/AmazBlog.Web.csproj",
   "expectedPackageFiles": [
@@ -33,6 +33,8 @@
     "/Users/yanxl/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.0/microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "/Users/yanxl/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
     "/Users/yanxl/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "/Users/yanxl/.nuget/packages/npgsql/6.0.4/npgsql.6.0.4.nupkg.sha512",
+    "/Users/yanxl/.nuget/packages/npgsql.entityframeworkcore.postgresql/6.0.4/npgsql.entityframeworkcore.postgresql.6.0.4.nupkg.sha512",
     "/Users/yanxl/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.6/sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "/Users/yanxl/.nuget/packages/sqlitepclraw.core/2.0.6/sqlitepclraw.core.2.0.6.nupkg.sha512",
     "/Users/yanxl/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.6/sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",
