@@ -638,6 +638,8 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "AmazBlog.Share": "1.0.0",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.5",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.5",
           "Microsoft.EntityFrameworkCore": "6.0.5",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "6.0.4"
