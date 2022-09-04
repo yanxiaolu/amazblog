@@ -1,1 +1,0 @@
-﻿namespace AmazBlog.Share;public class Options{    public int Id { get; set; }    public int BlogId { get; set; }    public string OptionName { get; set; }    public string OPtionValue { get; set; }    public Options()    {    }}
