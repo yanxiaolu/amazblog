@@ -10,4 +10,8 @@ public class Posts
     public DateTime UpdateTime { get; set; }
     public List<Comments> Comments { get; set; }
 
+    // public async Task<ActionResult> OnGetAsync()
+    // {
+
+    // }
 }

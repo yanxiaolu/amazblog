@@ -1,2 +1,3 @@
 bin/Debug/
-.DS_Store
+Migrations/
+!.DS_Store

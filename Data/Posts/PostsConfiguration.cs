@@ -15,7 +15,6 @@ public class PostsConfiguration : IEntityTypeConfiguration<Posts>
 
         builder
         .Property(p => p.Content)
-        .IsRequired()
         .HasColumnType("text");
     }
 }
