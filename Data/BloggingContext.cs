@@ -1,11 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using amazBlog.Data;
+using System.Diagnostics;
+
 
 public class BloggingContext : DbContext
 {
     public DbSet<Blog> Blog { get; set; }
     public DbSet<Posts> Posts { get; set; }
     public DbSet<Comments> Comments { get; set; }
+    public BloggingContext(DbContextOptions<BloggingContext> options)
+    : base(options)
+    {
+        Debug.WriteLine($"{ContextId} context created.");
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite("Data Source=blogging.db");
