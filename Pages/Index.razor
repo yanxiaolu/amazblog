@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IBlogSetting BlogSetting
 
 <PageTitle>Index</PageTitle>
 
@@ -7,3 +8,20 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@foreach(var t in rsp)
+{
+<p>@t.Id</p>
+    <p>@t.Name</p>
+    <p>@t.ShortName</p>
+    <p>@t.Description</p>
+
+}
+
+@code{
+    IEnumerable<Blog> rsp;
+    protected override void OnInitialized(){
+       rsp = BlogSetting.GetAllSetting();
+
+    }
+}

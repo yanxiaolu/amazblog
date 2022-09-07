@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "es/tT6hRgmOTUSaDzronyfl02YhR1EBrk814BMmItJVwwbaXzkuTt5VyXF3l7/JrZT5pwtZKQ9AQ37uzyUWwfw==",
+  "dgSpecHash": "dh/6r+sAJiGnVEpKs6YzTnMZAEB386Wpp1bhwwlPCaETcTXdJVUueDS8IrRQhCOc+JV9tJJk7kw5a/HflWaBJw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GuoLi\\Code\\amazBlog\\amazBlog.csproj",
+  "projectFilePath": "C:\\Users\\GuoLi\\Code\\amazblog\\amazBlog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GuoLi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\GuoLi\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.8\\microsoft.data.sqlite.core.6.0.8.nupkg.sha512",

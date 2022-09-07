@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<IBlogSetting, BlogSetting>();
 // builder.Services.AddSingleton<WeatherForecastService>();--Deletes
 builder.Services.AddDbContext<BloggingContext>(
     option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
