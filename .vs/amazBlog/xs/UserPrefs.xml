@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{BACF00F8-CC55-442F-823A-EBD71ABA789B}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Infrastructure/AmazBlogContext.cs">
+    <Files>
+      <File FileName="AmazBlog.Web/Program.cs" Line="18" Column="1" />
+      <File FileName="Infrastructure/AmazBlogContext.cs" Line="15" Column="1" />
+      <File FileName="AmazBlog.Web/Data/ApplicationDbContext.cs" Line="8" Column="5" />
+      <File FileName="AmazBlog.Console/Program.cs" Line="20" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="amazBlog" expanded="True">
+            <Node name="AmazBlog.Infrastructure" expanded="True" />
+            <Node name="AmazBlog.Web" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
