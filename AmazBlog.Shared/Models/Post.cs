@@ -10,5 +10,6 @@ public class Post
     public DateTime PublishTime { get; set; }
     public DateTime UpdateTime { get; set; }
     public List<Comment> Comments { get; set; }
+    public Blog Blog { get; set; }
 }
 
