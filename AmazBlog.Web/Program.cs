@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using AmazBlog.Web.Data;
+using AmazBlog.EF;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-
+//builder.Services.AddScoped(_ => new BloggingContext(builder.Configuration.GetConnectionString("DefaultConn")));
+builder.Services.AddDbContext<BloggingContext>(
+    option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

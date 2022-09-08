@@ -12,14 +12,14 @@ public class BloggingContext : DbContext
     public DbSet<Comment> Comments { get; set; }
 
     public BloggingContext(DbContextOptions<BloggingContext> options)
-        : base(options)
+    : base(options)
     {
         Debug.WriteLine($"{ContextId} context created.");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=blogging.db");
+        //optionsBuilder.UseSqlite("Data Source=blogging.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

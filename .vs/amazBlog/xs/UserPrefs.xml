@@ -3,19 +3,19 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.AmazBlog.Shared FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.EF/BloggingContext.cs">
+    <Files>
+      <File FileName="AmazBlog.EF/Configurations/BlogConfigration.cs" Line="1" Column="1" />
+      <File FileName="AmazBlog.EF/Configurations/PostConfigration.cs" Line="27" Column="1" />
+      <File FileName="AmazBlog.EF/BloggingContext.cs" Line="15" Column="20" />
+      <File FileName="AmazBlog.Web/appsettings.json" Line="10" Column="21" />
+      <File FileName="AmazBlog.Web/Program.cs" Line="24" Column="19" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="amazBlog" expanded="True">
-            <Node name="AmazBlog.EF" expanded="True">
-              <Node name="Configrations" expanded="True">
-                <Node name="CommentConfiguration.cs" selected="True" />
-              </Node>
-            </Node>
-            <Node name="AmazBlog.Shared" expanded="True">
-              <Node name="Models" expanded="True" />
-            </Node>
+            <Node name="AmazBlog.EF" expanded="True" />
             <Node name="AmazBlog.Web" expanded="True" />
           </Node>
         </State>
@@ -26,7 +26,9 @@
   <DisabledProjects>
     <String>amazBlog.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.AmazBlog.EF FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
 </Properties>
