@@ -12,8 +12,16 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddScoped(_ => new BloggingContext(builder.Configuration.GetConnectionString("DefaultConn")));
+
+//使用sqlite
+//builder.Services.AddDbContext<BloggingContext>(
+//    option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
+
+//使用sqlserver
 builder.Services.AddDbContext<BloggingContext>(
-    option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
+    option => option.UseSqlServer(
+        builder.Configuration.GetConnectionString("SqlSrvConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
