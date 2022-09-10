@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using AmazBlog.Web.Data;
+﻿using AmazBlog.Web.Data;
 using AmazBlog.EF;
-using Microsoft.Extensions.DependencyInjection;
+using AmazBlog.Web.Configuraions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,13 +12,15 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddScoped(_ => new BloggingContext(builder.Configuration.GetConnectionString("DefaultConn")));
 
 //使用sqlite
-//builder.Services.AddDbContext<BloggingContext>(
-//    option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
+builder.Services.AddDbContext<BloggingContext>(
+   option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
 
 //使用sqlserver
-builder.Services.AddDbContext<BloggingContext>(
-    option => option.UseSqlServer(
-        builder.Configuration.GetConnectionString("SqlSrvConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
+// builder.Services.AddDbContext<BloggingContext>(
+//     option => option.UseSqlServer(
+//         builder.Configuration.GetConnectionString("SqlSrvConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
+//加入service集合
+builder.Services.AddPostServices(builder.Configuration);
 
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using AmazBlog.Shared.Models;
 
-namespace AmazBlog.Shared;
+namespace AmazBlog.Shared.Models;
 public class Post
 {
     public int Id { get; set; }
@@ -9,7 +9,7 @@ public class Post
     public string Content { get; set; }
     public DateTime PublishTime { get; set; }
     public DateTime UpdateTime { get; set; }
-    public List<Comment> Comments { get; set; }
+    public List<Comment>? Comments { get; set; }
     public Blog Blog { get; set; }
 }
 

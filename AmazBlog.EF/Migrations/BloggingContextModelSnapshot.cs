@@ -3,7 +3,6 @@ using System;
 using AmazBlog.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -16,31 +15,25 @@ namespace AmazBlog.EF.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.8");
 
             modelBuilder.Entity("AmazBlog.Shared.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ShortName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -60,22 +53,20 @@ namespace AmazBlog.EF.Migrations
                 {
                     b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("CommentContent")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CommentDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CommentPostId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("PostsId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("CommentId");
 
@@ -84,30 +75,28 @@ namespace AmazBlog.EF.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("AmazBlog.Shared.Post", b =>
+            modelBuilder.Entity("AmazBlog.Shared.Models.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("BlogId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("PublishTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdateTime")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -118,7 +107,7 @@ namespace AmazBlog.EF.Migrations
 
             modelBuilder.Entity("AmazBlog.Shared.Models.Comment", b =>
                 {
-                    b.HasOne("AmazBlog.Shared.Post", "Posts")
+                    b.HasOne("AmazBlog.Shared.Models.Post", "Posts")
                         .WithMany("Comments")
                         .HasForeignKey("PostsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -127,7 +116,7 @@ namespace AmazBlog.EF.Migrations
                     b.Navigation("Posts");
                 });
 
-            modelBuilder.Entity("AmazBlog.Shared.Post", b =>
+            modelBuilder.Entity("AmazBlog.Shared.Models.Post", b =>
                 {
                     b.HasOne("AmazBlog.Shared.Models.Blog", "Blog")
                         .WithMany("Posts")
@@ -143,7 +132,7 @@ namespace AmazBlog.EF.Migrations
                     b.Navigation("Posts");
                 });
 
-            modelBuilder.Entity("AmazBlog.Shared.Post", b =>
+            modelBuilder.Entity("AmazBlog.Shared.Models.Post", b =>
                 {
                     b.Navigation("Comments");
                 });

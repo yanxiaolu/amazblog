@@ -25,5 +25,6 @@
     <ProjectReference Include="..\AmazBlog.EF\AmazBlog.EF.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\AmazBlog.Core\AmazBlog.Core.csproj" />
   </ItemGroup>
 </Project>
