@@ -4,6 +4,9 @@ namespace AmazBlog.Core.Interfaces;
 
 public interface IPostServices
 {
-    // Task<List<Post>> PostsList();
+
     List<Post> PostsList();
+    Task<bool> Add(Post post);
+    //Task<bool> Update(Post post);
+    // Task<List<Post>> List();
 }

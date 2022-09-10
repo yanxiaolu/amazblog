@@ -1,0 +1,22 @@
+﻿@inject IPostServices PostServices;
+@inject NavigationManager NavigationManager
+
+
+<EditForm class="mb-3" Model="@post" OnSubmit="Submit">
+    <label class="form-label">标题</label>
+    <InputText class="form-control" @bind-Value="post.Title"></InputText>
+    <label class="form-label">内容</label>
+    <InputTextArea class="form-control" @bind-Value="post.Content"></InputTextArea>
+    <button class="btn btn-primary mb-3" type="submit">Submit</button>
+</EditForm>
+
+@code {
+    Post post = new Post();
+
+    private void Submit()
+    {
+        post.PublishTime = DateTime.Now;
+        PostServices.Add(post);
+        NavigationManager.NavigateTo("/");
+    }
+}

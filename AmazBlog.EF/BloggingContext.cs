@@ -28,6 +28,10 @@ public class BloggingContext : DbContext
         .HasData(
             new Blog { Id = 1, Name = "amazBlog", ShortName = "AMZ", Description = "Made amazing" }
         );
+        modelBuilder.Entity<Post>()
+        .HasData(
+            new Post { Id = 1, Title = "Welcome AmazBlog", Content = "My First Post", PublishTime = DateTime.Now, UpdateTime = DateTime.Now }
+        );
 
         modelBuilder.Entity<Comment>()
         .HasOne(p => p.Posts)
