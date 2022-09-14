@@ -1,0 +1,19 @@
+﻿@page "/edit/{Id:int?}"
+
+<h3>EditPost @Id</h3>
+
+@if(Id==0)
+{
+    <PostEditor />
+
+    }
+else
+{
+    <p><h1>EDIT EXISTS POSTS</h1></p>
+
+}
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+}

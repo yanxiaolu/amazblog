@@ -3,18 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazBlog.EF", "AmazBlog.EF\AmazBlog.EF.csproj", "{2C4AC26A-564E-45BA-9256-D7120FBC658D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazBlog.EF", "AmazBlog.EF\AmazBlog.EF.csproj", "{2C4AC26A-564E-45BA-9256-D7120FBC658D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazBlog.Shared", "AmazBlog.Shared\AmazBlog.Shared.csproj", "{EB563958-B254-4893-AD84-61F8BF17B0FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazBlog.Shared", "AmazBlog.Shared\AmazBlog.Shared.csproj", "{EB563958-B254-4893-AD84-61F8BF17B0FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazBlog.Web", "AmazBlog.Web\AmazBlog.Web.csproj", "{7C312336-6F7A-43A6-8803-DA4C2594FA34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazBlog.Web", "AmazBlog.Web\AmazBlog.Web.csproj", "{7C312336-6F7A-43A6-8803-DA4C2594FA34}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A2E07C68-321B-41EA-9C94-871C30450D09}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazBlog.Core", "AmazBlog.Core\AmazBlog.Core.csproj", "{08E97B19-E774-4607-8684-618FBFF5A0C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazBlog.Core", "AmazBlog.Core\AmazBlog.Core.csproj", "{08E97B19-E774-4607-8684-618FBFF5A0C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{71375432-BF64-4FAE-8757-1C230C51C0AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71375432-BF64-4FAE-8757-1C230C51C0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71375432-BF64-4FAE-8757-1C230C51C0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71375432-BF64-4FAE-8757-1C230C51C0AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C4AC26A-564E-45BA-9256-D7120FBC658D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C4AC26A-564E-45BA-9256-D7120FBC658D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C4AC26A-564E-45BA-9256-D7120FBC658D}.Release|Any CPU.ActiveCfg = Release|Any CPU
