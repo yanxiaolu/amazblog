@@ -10,6 +10,7 @@ public static class ConfigurePostServices
         IConfiguration configuration)
     {
         services.AddScoped(typeof(IPostServices), typeof(PostServices));
+        services.AddAuthentication();
 
         return services;
     }
