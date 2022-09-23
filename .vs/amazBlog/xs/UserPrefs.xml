@@ -2,14 +2,14 @@
   <DisabledProjects>
     <String>amazBlog.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.Web/Pages/Index.razor">
     <Files>
-      <File FileName="AmazBlog.Web/Pages/Index.razor" Line="30" Column="6" />
+      <File FileName="AmazBlog.Web/Pages/Index.razor" Line="27" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -35,7 +35,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
 </Properties>
