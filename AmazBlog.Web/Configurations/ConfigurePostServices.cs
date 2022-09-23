@@ -1,5 +1,6 @@
 using AmazBlog.Core.Interfaces;
 using AmazBlog.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AmazBlog.Web.Configuraions;
 
