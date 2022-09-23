@@ -10,5 +10,10 @@ public class Post
     public DateTime PublishTime { get; set; }
     public DateTime UpdateTime { get; set; }
     public List<Comment>? Comments { get; set; }
+    public Post()
+    {
+        PublishTime = DateTime.Now;
+        UpdateTime = DateTime.Now;
+    }
 }
 
