@@ -1,32 +1,41 @@
-﻿<Properties StartupConfiguration="{7C312336-6F7A-43A6-8803-DA4C2594FA34}|Default" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.Shared FirstBuild="True" />
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{7C312336-6F7A-43A6-8803-DA4C2594FA34}|Default">
   <DisabledProjects>
     <String>amazBlog.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.EF/BloggingContext.cs">
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.Web/Pages/Index.razor">
     <Files>
-      <File FileName="AmazBlog.EF/Configurations/BlogConfigration.cs" Line="1" Column="1" />
-      <File FileName="AmazBlog.EF/Configurations/PostConfigration.cs" Line="27" Column="1" />
-      <File FileName="AmazBlog.EF/BloggingContext.cs" Line="15" Column="20" />
-      <File FileName="AmazBlog.Web/appsettings.json" Line="10" Column="21" />
-      <File FileName="AmazBlog.Web/Program.cs" Line="24" Column="19" />
+      <File FileName="AmazBlog.Web/Pages/Index.razor" Line="30" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="amazBlog" expanded="True">
+            <Node name="AmazBlog.Core" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
             <Node name="AmazBlog.EF" expanded="True" />
-            <Node name="AmazBlog.Web" expanded="True" />
+            <Node name="AmazBlog.Shared" expanded="True">
+              <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="AmazBlog.Web" expanded="True">
+              <Node name="Pages" expanded="True" />
+              <Node name="Shared" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.EF FirstBuild="True" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
