@@ -7,25 +7,21 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.Web/Pages/Index.razor">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.Web/appsettings.json">
     <Files>
-      <File FileName="AmazBlog.Web/Pages/Index.razor" Line="27" Column="14" />
+      <File FileName="AmazBlog.Web/Program.cs" Line="25" Column="27" />
+      <File FileName="AmazBlog.Web/Configurations/ConfigurePostServices.cs" Line="13" Column="38" />
+      <File FileName="AmazBlog.Web/appsettings.json" Line="10" Column="57" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="amazBlog" expanded="True">
-            <Node name="AmazBlog.Core" expanded="True">
-              <Node name="Interfaces" expanded="True" />
-              <Node name="Services" expanded="True" />
-            </Node>
-            <Node name="AmazBlog.EF" expanded="True" />
-            <Node name="AmazBlog.Shared" expanded="True">
-              <Node name="Models" expanded="True" />
-            </Node>
             <Node name="AmazBlog.Web" expanded="True">
+              <Node name="Configurations" expanded="True" />
               <Node name="Pages" expanded="True" />
               <Node name="Shared" expanded="True" />
+              <Node name="appsettings.json" selected="True" />
             </Node>
           </Node>
         </State>
