@@ -18,7 +18,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //使用sqlserver
 builder.Services.AddDbContext<BloggingContext>(
     option => option.UseSqlServer(
-        builder.Configuration.GetConnectionString("SqlSrvConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
+        builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
 //加入service集合
 builder.Services.AddPostServices(builder.Configuration);
 
