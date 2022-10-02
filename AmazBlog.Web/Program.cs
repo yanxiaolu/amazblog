@@ -12,13 +12,13 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddScoped(_ => new BloggingContext(builder.Configuration.GetConnectionString("DefaultConn")));
 
 //使用sqlite
-builder.Services.AddDbContext<BloggingContext>(
-   option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
+// builder.Services.AddDbContext<BloggingContext>(
+//    option => option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConn")));
 
 //使用sqlserver
-// builder.Services.AddDbContext<BloggingContext>(
-//     option => option.UseSqlServer(
-//         builder.Configuration.GetConnectionString("SqlSrvConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
+builder.Services.AddDbContext<BloggingContext>(
+    option => option.UseSqlServer(
+        builder.Configuration.GetConnectionString("SqlSrvConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
 //加入service集合
 builder.Services.AddPostServices(builder.Configuration);
 
