@@ -5,6 +5,8 @@ using AmazBlog.Shared.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace AmazBlog.EF;
 public class BloggingContext : IdentityDbContext
@@ -22,6 +24,10 @@ public class BloggingContext : IdentityDbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         //optionsBuilder.UseSqlite("Data Source=blogging.db");
+        optionsBuilder.LogTo(Console.WriteLine,
+        LogLevel.Debug,
+        DbContextLoggerOptions.DefaultWithLocalTime |
+        DbContextLoggerOptions.SingleLine);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,9 +1,10 @@
-﻿using AmazBlog.Web.Data;
+using AmazBlog.Web.Data;
 using AmazBlog.EF;
 using AmazBlog.Web.Configuraions;
 using Microsoft.EntityFrameworkCore;
 using AmazBlog.EF.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using AmazBlog.Web.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,9 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddDbContext<BloggingContext>(
     option => option.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.Web")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<BloggingContext>();
 
 builder.Services.AddDbContext<AuthContext>(
     option => option.UseSqlServer(
