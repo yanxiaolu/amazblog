@@ -2,6 +2,8 @@
 using AmazBlog.EF;
 using AmazBlog.Web.Configuraions;
 using Microsoft.EntityFrameworkCore;
+using AmazBlog.EF.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,13 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //使用sqlserver
 builder.Services.AddDbContext<BloggingContext>(
     option => option.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.EF")));
+        builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.Web")));
+
+builder.Services.AddDbContext<AuthContext>(
+    option => option.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.Web")));
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthContext>();
+
 //加入service集合
 builder.Services.AddPostServices(builder.Configuration);
 
@@ -37,6 +45,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

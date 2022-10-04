@@ -1,37 +1,61 @@
-﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{7C312336-6F7A-43A6-8803-DA4C2594FA34}|Default">
-  <DisabledProjects>
-    <String>amazBlog.csproj</String>
-  </DisabledProjects>
+﻿<Properties StartupConfiguration="{7C312336-6F7A-43A6-8803-DA4C2594FA34}|Default" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.AmazBlog.Console PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.Web/appsettings.json">
+  <DisabledProjects>
+    <String>amazBlog.csproj</String>
+  </DisabledProjects>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AmazBlog.EF/BloggingContext.cs">
     <Files>
-      <File FileName="AmazBlog.Web/Program.cs" Line="25" Column="27" />
-      <File FileName="AmazBlog.Web/Configurations/ConfigurePostServices.cs" Line="13" Column="38" />
-      <File FileName="AmazBlog.Web/appsettings.json" Line="10" Column="57" />
+      <File FileName="AmazBlog.Web/Configurations/ConfigurePostServices.cs" Line="14" Column="1" />
+      <File FileName="AmazBlog.Web/Program.cs" Line="27" Column="108" />
+      <File FileName="AmazBlog.EF/BloggingContext.cs" Line="16" Column="49" />
+      <File FileName="AmazBlog.EF/AuthContext.cs" Line="16" Column="43" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="amazBlog" expanded="True">
+            <Node name="AmazBlog.Core" expanded="True">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="AmazBlog.EF" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True">
+                  <Node name="Microsoft.AspNetCore.Identity.EntityFrameworkCore" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Configurations" expanded="True" />
+              <Node name="BloggingContext.cs" selected="True" />
+            </Node>
+            <Node name="AmazBlog.Shared" expanded="True">
+              <Node name="Models" expanded="True" />
+            </Node>
             <Node name="AmazBlog.Web" expanded="True">
               <Node name="Configurations" expanded="True" />
-              <Node name="Pages" expanded="True" />
+              <Node name="Data" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Index.razor" expanded="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
               <Node name="Shared" expanded="True" />
-              <Node name="appsettings.json" selected="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
+        <State>
+          <Value>post</Value>
+          <Value>DbContext</Value>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.AmazBlog.Web PreferredExecutionTarget="/Applications/Safari.app" />
-  <MultiItemStartupConfigurations />
 </Properties>

@@ -10,6 +10,7 @@ namespace AmazBlog.Core.Services;
 
 public class PostServices : IPostServices
 {
+    private readonly DbContextOptions _options;
     private BloggingContext _db;
     private NavigationManager _NavigationManager;
     private Post post = new();
@@ -19,31 +20,27 @@ public class PostServices : IPostServices
         _db = db;
         _NavigationManager = NavigationManager;
     }
-    public async Task<List<Post>> PostsList()
+    //public async Task<List<Post>> PostsList()
+    //{
+    //    return await _db.Posts.ToListAsync();
+    //}
+    public List<Post> PostsList()
     {
-        return await _db.Posts.ToListAsync();
-    }
-    public async Task<bool> Add(Post post)
-    {
-        var existing = await _db.Posts.Where(p => p.Title == post.Title).FirstOrDefaultAsync();
-        if (existing != null)
-            return false;
-        await _db.AddAsync(post);
-        _NavigationManager.NavigateTo("/");
-        return await _db.SaveChangesAsync() > 0;
+        //_db = new BloggingContext();
+        return _db.Posts.ToList();
     }
 
-    // public async Task<bool> Update(Post post)
-    // {
-    //     var existing = await _db.Posts.Where(p => p.Id == post.Id).FirstOrDefaultAsync();
-    //     if (existing != null)
-    //         return false;
-    //     // existing.Title = post.Title;
-    //     // existing.Content = post.Content;
-    //     post.UpdateTime = DateTime.Now;
-    //     _db.Entry(post).State = EntityState.Modified;
-    //     return await _db.SaveChangesAsync() > 0;
-    // }
+    public async Task<bool> Add(Post post)
+    {
+        //var existing = await _db.Posts.Where(p => p.Title == post.Title).FirstOrDefaultAsync();
+        //if (existing != null)
+        //    return false;
+        await _db.AddAsync(post);
+        await _db.SaveChangesAsync();
+        _NavigationManager.NavigateTo("/");
+        return true;
+    }
+
     public async Task Update(Post post)
     {
         post.UpdateTime = DateTime.Now;
@@ -59,6 +56,5 @@ public class PostServices : IPostServices
     public async Task<Post> GetAllPost(int id)
     {
         return await _db.Posts.Where(p => p.Id == id).FirstOrDefaultAsync();
-
     }
 }

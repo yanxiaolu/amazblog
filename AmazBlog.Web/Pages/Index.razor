@@ -55,10 +55,14 @@ Welcome to your new app.
 @code {
     List<Post>? rsp;
     bool showingDeleteDialog;
-    protected override async Task OnInitializedAsync()
+    protected override void OnParametersSet()
     {
-        rsp = await PostServices.PostsList();
+        rsp = PostServices.PostsList();
     }
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    rsp = await PostServices.PostsList();
+    //}
     void ShowingDeleteDialog()
     {
         showingDeleteDialog = true;

@@ -2,10 +2,12 @@
 using System.Xml.Linq;
 using AmazBlog.Shared;
 using AmazBlog.Shared.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AmazBlog.EF;
-public class BloggingContext : DbContext
+public class BloggingContext : IdentityDbContext
 {
     public DbSet<Blog> Blog { get; set; }
     public DbSet<Post> Posts { get; set; }
@@ -14,7 +16,7 @@ public class BloggingContext : DbContext
     public BloggingContext(DbContextOptions<BloggingContext> options)
     : base(options)
     {
-        Debug.WriteLine($"{ContextId} context created.");
+        Console.WriteLine($"{ContextId} context created.");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,6 +26,7 @@ public class BloggingContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Blog>()
         .HasData(
             new Blog { Id = 1, Name = "amazBlog", ShortName = "AMZ", Description = "Made amazing" }

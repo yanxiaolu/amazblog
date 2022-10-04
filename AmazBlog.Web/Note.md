@@ -8,3 +8,4 @@ docker run --name sqlExpress \
 -d mcr.microsoft.com/mssql/server
 
 
+, b => b.MigrationsAssembly("AmazBlog.Web")
