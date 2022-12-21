@@ -4,7 +4,6 @@ using AmazBlog.Web.Configuraions;
 using Microsoft.EntityFrameworkCore;
 using AmazBlog.EF.Identity.Data;
 using Microsoft.AspNetCore.Identity;
-using AmazBlog.Web.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,12 +23,12 @@ builder.Services.AddDbContext<BloggingContext>(
         builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.Web")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<BloggingContext>();
+.AddEntityFrameworkStores<BloggingContext>();
 
-builder.Services.AddDbContext<AuthContext>(
-    option => option.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.Web")));
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthContext>();
+// builder.Services.AddDbContext<AuthContext>(
+//     option => option.UseSqlServer(
+//         builder.Configuration.GetConnectionString("DefaultConn"), b => b.MigrationsAssembly("AmazBlog.Web")));
+// //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AuthContext>();
 
 //加入service集合
 builder.Services.AddPostServices(builder.Configuration);
