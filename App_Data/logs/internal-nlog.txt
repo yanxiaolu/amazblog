@@ -1,1 +1,0 @@
-2022-12-21 16:56:42.2093 Warn Logger: Microsoft.Hosting.Lifetime configured with duplicate output to target: FileTarget(Name=file). LoggingRule with NamePattern='Microsoft.Hosting.Lifetime' and Level=Warn has been skipped.
