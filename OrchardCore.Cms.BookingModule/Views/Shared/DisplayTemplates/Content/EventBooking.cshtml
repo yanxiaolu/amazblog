@@ -1,0 +1,32 @@
+@model OrchardCore.Cms.BookingModule.ViewModels.EventBookingViewModel
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<div>
+    <h3>@Model.Title</h3>
+    <p>@Model.Description.Substring(0, Math.Min(Model.Description.Length, 100))...</p>
+    <p><a asp-controller="EventBooking" asp-action="Details" asp-route-contentItemId="@Model.ContentItemId">查看详情</a></p>
+    @if (Model.CanBook)
+    {
+        @if (Model.IsLoggedIn || !Model.RequiresLogin)
+        {
+            @using (Html.BeginForm("Book", "EventBooking", FormMethod.Post))
+            {
+                @Html.HiddenFor(m => m.ContentItemId)
+                <button type="submit" class="btn btn-sm btn-primary">预约</button>
+            }
+        }
+        else
+        {
+            <p><a asp-area="OrchardCore.Users" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Url.Action("Details", "EventBooking", new { contentItemId = Model.ContentItemId })">登录预约</a></p>
+        }
+    }
+    else if (!string.IsNullOrEmpty(Model.BookingMessage))
+    {
+        <p class="text-info">@Model.BookingMessage</p>
+    }
+    else
+    {
+        <p class="text-warning">无法预约</p>
+    }
+</div>

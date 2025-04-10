@@ -1,0 +1,46 @@
+@page
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@model OrchardCore.Cms.BookingModule.ViewModels.EventBookingViewModel
+
+<h1>@Model.Title</h1>
+<p>@Html.Raw(Model.Description)</p>
+<p><strong>开始时间:</strong> @Model.StartDateTime</p>
+<p><strong>结束时间:</strong> @Model.EndDateTime</p>
+<p><strong>地点:</strong> @Model.Location</p>
+<p><strong>容量:</strong> @Model.Capacity</p>
+<p><strong>已预约人数:</strong> @Model.BookedCount</p>
+
+@if (!string.IsNullOrEmpty(Model.BookingMessage))
+{
+    <div class="alert alert-info">@Model.BookingMessage</div>
+}
+
+@if (Model.CanBook)
+{
+    @if (Model.IsLoggedIn || !Model.RequiresLogin)
+    {
+        @using (Html.BeginForm("Book", "EventBooking", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.ContentItemId)
+            <button type="submit" class="btn btn-primary">预约活动</button>
+        }
+    }
+    else
+    {
+        <p><a asp-area="OrchardCore.Users" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Url.Action("Details", "EventBooking", new { contentItemId = Model.ContentItemId })">请登录后预约</a></p>
+    }
+}
+else if (string.IsNullOrEmpty(Model.BookingMessage))
+{
+    <div class="alert alert-warning">无法预约该活动。</div>
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OrchardCore.ContentFields" Version="2.1.6" />
+        <PackageReference Include="OrchardCore.Media" Version="2.1.6" />
+        <PackageReference Include="OrchardCore.Module.Targets" Version="2.1.6"/>
+        <PackageReference Include="OrchardCore.ContentManagement" Version="2.1.6"/>
+        <PackageReference Include="OrchardCore.ContentTypes.Abstractions" Version="2.1.6"/>
+        <PackageReference Include="OrchardCore.DisplayManagement" Version="2.1.6"/>
+        <PackageReference Include="OrchardCore.Title" Version="2.1.6" />
+        <PackageReference Include="OrchardCore.Users.Abstractions" Version="2.1.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Views\EventBooking\Details.cshtml" />
+    </ItemGroup>
+
+</Project>
