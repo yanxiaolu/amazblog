@@ -12,4 +12,7 @@ public class EventBooking : ContentPart
     public TextField Location { get; set; }
     public DateTimeField StartDateTime { get; set; }
     public DateTimeField EndDateTime { get; set; }
+    public int Capacity { get; set; } = 100;
+    public int BookedCount { get; set; }
+    public bool RequiresLogin { get; set; } = true;
 }

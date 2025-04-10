@@ -38,15 +38,15 @@ public class EventBookingController : Controller // 添加继承Controller基类
         {
             //打印日志
             Console.WriteLine("debug: EventBookingController: Details: contentItemId is null");
-            return NotFound();            return NotFound();
+            return NotFound();
         }
 
         foreach (var part in eventBookingContentItem.Content.Node)
         {
             Console.WriteLine("debug: EventBookingController: Details: part is " + part);
         }
-        
-        var eventBookingPart = eventBookingContentItem.ContentItem;
+
+        var eventBookingPart = eventBookingContentItem.As<Models.EventBooking>();
         if (eventBookingPart == null)
         {
             //打印日志
@@ -59,44 +59,36 @@ public class EventBookingController : Controller // 添加继承Controller基类
         var canBook = true;
         string bookingMessage = null;
 
-        // if (eventBookingPart.RequiresLogin && !isLoggedIn)
-        // {
-        //     canBook = false;
-        //     bookingMessage = "请先登录才能预约活动。";
-        // }
-        // else if (eventBookingPart.BookedCount >= eventBookingPart.Capacity)
-        // {
-        //     canBook = false;
-        //     bookingMessage = "活动已满，无法预约。";
-        // }
-        // else if (isLoggedIn)
-        // {
-        //     // 检查用户是否已经预约过该活动
-        //     var hasBooked = await _eventBookingService.HasUserBooked(contentItemId, user.UserName);
-        //     if (hasBooked)
-        //     {
-        //         canBook = false;
-        //         bookingMessage = "您已经预约过该活动。";
-        //     }
-        // }
+        // 这里需要根据实际情况添加逻辑判断活动是否可以预约
+        // 例如：检查活动容量、是否需要登录、用户是否已预约等
+        if (isLoggedIn)
+        {
+            // 检查用户是否已经预约过该活动
+            var hasBooked = await _eventBookingService.HasUserBooked(contentItemId, user.UserName);
+            if (hasBooked)
+            {
+                canBook = false;
+                bookingMessage = "您已经预约过该活动。";
+            }
+        }
 
-        // var viewModel = new EventBookingViewModel
-        // {
-        //     Title = eventBookingPart.Title,
-        //     Description = eventBookingPart.Description,
-        //     StartDateTime = eventBookingPart.StartDateTime,
-        //     EndDateTime = eventBookingPart.EndDateTime,
-        //     Location = eventBookingPart.Location,
-        //     Capacity = eventBookingPart.Capacity,
-        //     BookedCount = eventBookingPart.BookedCount,
-        //     RequiresLogin = eventBookingPart.RequiresLogin,
-        //     ContentItemId = contentItemId,
-        //     IsLoggedIn = isLoggedIn,
-        //     CanBook = canBook,
-        //     BookingMessage = bookingMessage
-        // };
+        var viewModel = new EventBookingViewModel
+        {
+            Title = eventBookingPart.Title,
+            Description = eventBookingPart.Description,
+            StartDateTime = eventBookingPart.StartDateTime,
+            EndDateTime = eventBookingPart.EndDateTime,
+            Location = eventBookingPart.Location,
+            Capacity = 100, // 这里需要根据实际情况设置容量
+            BookedCount = 0, // 从数据库获取实际预约人数
+            RequiresLogin = true, // 根据需求设置是否需要登录
+            ContentItemId = contentItemId,
+            IsLoggedIn = isLoggedIn,
+            CanBook = canBook,
+            BookingMessage = bookingMessage
+        };
 
-        return View();
+        return View(viewModel);
     }
 
     [HttpPost]
@@ -126,16 +118,16 @@ public class EventBookingController : Controller // 添加继承Controller基类
             return Unauthorized();
         }
 
-        if (eventBookingPart.RequiresLogin && user == null)
-        {
-            return RedirectToAction("Details", new { contentItemId = model.EventBookingContentItemId });
-        }
+        // if (eventBookingPart.RequiresLogin && user == null)
+        // {
+        //     return RedirectToAction("Details", new { contentItemId = model.EventBookingContentItemId });
+        // }
 
-        if (eventBookingPart.BookedCount >= eventBookingPart.Capacity)
-        {
-            TempData["Error"] = "活动已满，无法预约。";
-            return RedirectToAction("Details", new { contentItemId = model.EventBookingContentItemId });
-        }
+        // if (eventBookingPart.BookedCount >= eventBookingPart.Capacity)
+        // {
+        //     TempData["Error"] = "活动已满，无法预约。";
+        //     return RedirectToAction("Details", new { contentItemId = model.EventBookingContentItemId });
+        // }
 
         // 检查用户是否已经预约过该活动
         var hasBooked = await _eventBookingService.HasUserBooked(model.EventBookingContentItemId, user.UserName);
@@ -149,7 +141,7 @@ public class EventBookingController : Controller // 添加继承Controller基类
         await _eventBookingService.CreateBooking(model.EventBookingContentItemId, user.UserName);
 
         // 更新活动已预约人数
-        eventBookingPart.BookedCount++;
+        // eventBookingPart.BookedCount++;
         await _contentManager.UpdateAsync(eventBookingContentItem);
 
         TempData["Success"] = "预约成功！";

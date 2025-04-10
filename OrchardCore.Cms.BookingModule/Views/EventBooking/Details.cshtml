@@ -2,45 +2,124 @@
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 @model OrchardCore.Cms.BookingModule.ViewModels.EventBookingViewModel
-
-<h1>@Model.Title</h1>
-<p>@Html.Raw(Model.Description)</p>
-<p><strong>开始时间:</strong> @Model.StartDateTime</p>
-<p><strong>结束时间:</strong> @Model.EndDateTime</p>
-<p><strong>地点:</strong> @Model.Location</p>
-<p><strong>容量:</strong> @Model.Capacity</p>
-<p><strong>已预约人数:</strong> @Model.BookedCount</p>
-
-@if (!string.IsNullOrEmpty(Model.BookingMessage))
-{
-    <div class="alert alert-info">@Model.BookingMessage</div>
+@{
+    ViewData["Title"] = Model.Title.Title;
 }
 
-@if (Model.CanBook)
-{
-    @if (Model.IsLoggedIn || !Model.RequiresLogin)
-    {
-        @using (Html.BeginForm("Book", "EventBooking", FormMethod.Post))
-        {
-            @Html.HiddenFor(m => m.ContentItemId)
-            <button type="submit" class="btn btn-primary">预约活动</button>
-        }
-    }
-    else
-    {
-        <p><a asp-area="OrchardCore.Users" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Url.Action("Details", "EventBooking", new { contentItemId = Model.ContentItemId })">请登录后预约</a></p>
-    }
-}
-else if (string.IsNullOrEmpty(Model.BookingMessage))
-{
-    <div class="alert alert-warning">无法预约该活动。</div>
-}
+<div class="event-booking-details">
+    <h2>@Model.Title.Title</h2>
 
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success">@TempData["Success"]</div>
-}
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger">@TempData["Error"]</div>
-}
+    <div class="row">
+        <div class="col-md-6">
+            @if (Model.Description != null && !string.IsNullOrEmpty(Model.Description.Paths.FirstOrDefault()))
+            {
+                <div class="event-image mb-4">
+                    <img src="@Url.Content(Model.Description.Paths.FirstOrDefault())" alt="@Model.Title.Title"
+                        class="img-fluid" />
+                </div>
+            }
+
+            <div class="event-info card mb-4">
+                <div class="card-header">
+                    活动信息
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fa fa-map-marker-alt"></i> <strong>地点:</strong>
+                            @(Model.Location?.Text ?? "未指定")</li>
+                        <li class="list-group-item"><i class="fa fa-calendar-alt"></i> <strong>开始时间:</strong>
+                            @(Model.StartDateTime != null && Model.StartDateTime.Value.HasValue ?
+                                                        Model.StartDateTime.Value.Value.ToString("yyyy年MM月dd日 HH:mm") : "未指定")</li>
+                        <li class="list-group-item"><i class="fa fa-calendar-alt"></i> <strong>结束时间:</strong>
+                            @(Model.EndDateTime != null && Model.EndDateTime.Value.HasValue ?
+                                                        Model.EndDateTime.Value.Value.ToString("yyyy年MM月dd日 HH:mm") : "未指定")</li>
+                        <li class="list-group-item"><i class="fa fa-users"></i> <strong>剩余名额:</strong> @(Model.Capacity
+                                                        - Model.BookedCount)/@Model.Capacity</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="booking-section card">
+                <div class="card-header">
+                    活动预约
+                </div>
+                <div class="card-body">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["Success"]
+                        </div>
+                    }
+
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger">
+                            @TempData["Error"]
+                        </div>
+                    }
+
+                    @if (Model.CanBook)
+                    {
+                        @if (Model.IsLoggedIn || !Model.RequiresLogin)
+                        {
+                            <form asp-controller="EventBooking" asp-action="Book" method="post">
+                                <input type="hidden" name="EventBookingContentItemId" value="@Model.ContentItemId" />
+
+                                <div class="form-group">
+                                    <label for="ContactName">联系人姓名</label>
+                                    <input type="text" class="form-control" id="ContactName" name="ContactName" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactPhone">联系电话</label>
+                                    <input type="tel" class="form-control" id="ContactPhone" name="ContactPhone" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ContactEmail">电子邮箱</label>
+                                    <input type="email" class="form-control" id="ContactEmail" name="ContactEmail">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="NumberOfAttendees">参与人数</label>
+                                    <input type="number" class="form-control" id="NumberOfAttendees" name="NumberOfAttendees"
+                                        value="1" min="1" max="@(Model.Capacity - Model.BookedCount)">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Remarks">备注</label>
+                                    <textarea class="form-control" id="Remarks" name="Remarks" rows="3"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">提交预约</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info">
+                                该活动需要登录后才能预约。
+                            </div>
+                            <a asp-area="OrchardCore.Users" asp-controller="Account" asp-action="Login"
+                                asp-route-returnUrl="@Url.Action("Details", "EventBooking", new { contentItemId = Model.ContentItemId })"
+                                class="btn btn-secondary btn-lg btn-block">登录后预约</a>
+                        }
+                    }
+                    else if (!string.IsNullOrEmpty(Model.BookingMessage))
+                    {
+                        <div class="alert alert-info">
+                            @Model.BookingMessage
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">
+                            此活动当前无法预约。
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

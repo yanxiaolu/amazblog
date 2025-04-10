@@ -1,12 +1,16 @@
+using OrchardCore.ContentFields.Fields;
+using OrchardCore.Media.Fields;
+using OrchardCore.Title.Models;
+
 namespace OrchardCore.Cms.BookingModule.ViewModels;
 
 public class EventBookingViewModel
 {
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public DateTime? StartDateTime { get; set; }
-    public DateTime? EndDateTime { get; set; }
-    public string Location { get; set; }
+    public TitlePart Title { get; set; }
+    public MediaField Description { get; set; }
+    public TextField Location { get; set; }
+    public DateTimeField StartDateTime { get; set; }
+    public DateTimeField EndDateTime { get; set; }
     public int Capacity { get; set; }
     public int BookedCount { get; set; }
     public bool RequiresLogin { get; set; }
