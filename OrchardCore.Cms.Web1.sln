@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.Cms.Web1", "OrchardCore.Cms.Web1\OrchardCore.Cms.Web1.csproj", "{4E8AAA2F-3266-4761-93E3-74D836EFF5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.Cms.EventModule", "OrchardCore.Cms.EventModule\OrchardCore.Cms.EventModule.csproj", "{854E91B3-72D3-49FF-A2EF-B0FE16F2A4BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.BookingTheme", "OrchardCore.BookingTheme\OrchardCore.BookingTheme.csproj", "{CE21E2F6-285E-4A76-8724-3A44A411B626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.Cms.Module1", "OrchardCore.Cms.Module1\OrchardCore.Cms.Module1.csproj", "{759DF874-9FE7-480C-8DC7-2E19C677B149}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E8AAA2F-3266-4761-93E3-74D836EFF5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E8AAA2F-3266-4761-93E3-74D836EFF5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E8AAA2F-3266-4761-93E3-74D836EFF5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E8AAA2F-3266-4761-93E3-74D836EFF5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854E91B3-72D3-49FF-A2EF-B0FE16F2A4BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854E91B3-72D3-49FF-A2EF-B0FE16F2A4BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854E91B3-72D3-49FF-A2EF-B0FE16F2A4BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854E91B3-72D3-49FF-A2EF-B0FE16F2A4BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE21E2F6-285E-4A76-8724-3A44A411B626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE21E2F6-285E-4A76-8724-3A44A411B626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE21E2F6-285E-4A76-8724-3A44A411B626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE21E2F6-285E-4A76-8724-3A44A411B626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759DF874-9FE7-480C-8DC7-2E19C677B149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759DF874-9FE7-480C-8DC7-2E19C677B149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759DF874-9FE7-480C-8DC7-2E19C677B149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759DF874-9FE7-480C-8DC7-2E19C677B149}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
