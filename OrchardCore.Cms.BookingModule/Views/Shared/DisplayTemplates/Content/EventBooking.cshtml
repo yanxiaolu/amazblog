@@ -2,48 +2,20 @@
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 
-<div class="event-booking-item">
-    <h3>@Model.Title.Title</h3>
-
-    @if (Model.Description != null && !string.IsNullOrEmpty(Model.Description.Paths.FirstOrDefault()))
-    {
-        <div class="event-image">
-            <img src="@Url.Content(Model.Description.Paths.FirstOrDefault())" alt="@Model.Title.Title" />
-        </div>
-    }
-
-    <div class="event-details">
-        <p><strong>地点:</strong> @(Model.Location?.Text ?? "未指定")</p>
-        <p><strong>开始时间:</strong> @(Model.StartDateTime != null && Model.StartDateTime.Value.HasValue ?
-                        Model.StartDateTime.Value.Value.ToString("yyyy-MM-dd HH:mm") : "未指定")</p>
-        <p><strong>结束时间:</strong> @(Model.EndDateTime != null && Model.EndDateTime.Value.HasValue ?
-                        Model.EndDateTime.Value.Value.ToString("yyyy-MM-dd HH:mm") : "未指定")</p>
-        <p><strong>可预约人数:</strong> @Model.Capacity 人</p>
-        <p><strong>已预约人数:</strong> @Model.BookedCount 人</p>
-    </div>
-
-    <p><a asp-controller="EventBooking" asp-action="Details" asp-route-contentItemId="@Model.ContentItemId"
-            class="btn btn-info">查看详情</a></p>
+<div class="event-booking">
+    <h1>@Model.Title</h1>
+    <p><strong>地点:</strong> @Model.Location</p>
+    <p><strong>开始时间:</strong> @Model.StartDateTime?.ToString("yyyy-MM-dd HH:mm")</p>
+    <p><strong>结束时间:</strong> @Model.EndDateTime?.ToString("yyyy-MM-dd HH:mm")</p>
+    <p><strong>可预约人数:</strong> @Model.Capacity</p>
+    <p><strong>已预约人数:</strong> @Model.BookedCount</p>
 
     @if (Model.CanBook)
     {
-        @if (Model.IsLoggedIn || !Model.RequiresLogin)
-        {
-            <form asp-controller="EventBooking" asp-action="Book" method="post">
-                <input type="hidden" name="EventBookingContentItemId" value="@Model.ContentItemId" />
-                <button type="submit" class="btn btn-primary">立即预约</button>
-            </form>
-        }
-        else
-        {
-            <p><a asp-area="OrchardCore.Users" asp-controller="Account" asp-action="Login"
-                    asp-route-returnUrl="@Url.Action("Details", "EventBooking", new { contentItemId = Model.ContentItemId })"
-                    class="btn btn-secondary">登录预约</a></p>
-        }
-    }
-    else if (!string.IsNullOrEmpty(Model.BookingMessage))
-    {
-        <p class="text-info">@Model.BookingMessage</p>
+        <form asp-action="Book" method="post">
+            <input type="hidden" name="EventBookingContentItemId" value="@Model.ContentItemId" />
+            <button type="submit" class="btn btn-primary">立即预约</button>
+        </form>
     }
     else
     {

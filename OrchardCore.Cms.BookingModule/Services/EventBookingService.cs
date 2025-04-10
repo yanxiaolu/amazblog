@@ -6,7 +6,7 @@ using YesSql.Services; // 添加YesSql服务命名空间
 
 namespace OrchardCore.Cms.BookingModule.Services;
 
-public class EventBookingService:IEventBookingService
+public class EventBookingService : IEventBookingService
 {
     private readonly ISession _session;
     private readonly IContentManager _contentManager;
@@ -31,11 +31,11 @@ public class EventBookingService:IEventBookingService
     public async Task<bool> HasUserBooked(string eventBookingContentItemId, string userId)
     {
         var parsedId = int.Parse(eventBookingContentItemId);
-        
+
         // 使用YesSql的原生查询方式
         var bookings = await _session.Query<Booking>()
             .ListAsync();
-            
+
         // 在内存中进行过滤
         return bookings.Any(b => b.EventBookingContentItemId == parsedId && b.UserId == userId);
     }

@@ -1,36 +1,40 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using OrchardCore.Cms.BookingModule.Drivers;
-using OrchardCore.Cms.BookingModule.Migrations;
+using OrchardCore.Cms.BookingModule.Models;
 using OrchardCore.Cms.BookingModule.Services;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
+using OrchardCore.ContentTypes.Editors;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
-using OrchardCore.Security.Permissions;
 
-namespace OrchardCore.Cms.BookingModule;
-
-public sealed class Startup : StartupBase
+namespace OrchardCore.Cms.BookingModule
 {
-    public override void ConfigureServices(IServiceCollection services)
+    public class Startup : StartupBase
     {
-        services.AddScoped<IEventBookingService, EventBookingService>();
-        services.AddContentPart<Models.EventBooking>();
-        services.AddScoped<IContentPartDisplayDriver, EventBookingContentPartDisplayDriver>();
-        services.AddScoped<IDataMigration, EventBookingMigrations>();
-        services.AddScoped<IPermissionProvider, Permissions>();
-    }
+        public override void ConfigureServices(IServiceCollection services)
+        {
+            // 注册内容部件
+            services.AddContentPart<EventBooking>()
+                   .UseDisplayDriver<EventBookingDisplayDriver>();
 
-    public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes,
-        IServiceProvider serviceProvider)
-    {
-        routes.MapAreaControllerRoute(
-            name: "EventBooking.Details",
-            areaName: "OrchardCore.Cms.BookingModule",  // 修改这里
-            pattern: "event-booking/{contentItemId}",
-            defaults: new { controller = "EventBooking", action = "Details" }
-        );
+            // 注册Migration用于内容类型自动创建
+            services.AddScoped<IDataMigration, Migrations>();
+
+            // 注册服务
+            services.AddScoped<IEventBookingService, EventBookingService>();
+        }
+
+        public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
+        {
+            // 配置路由
+            routes.MapAreaControllerRoute(
+                name: "EventBooking",
+                areaName: "OrchardCore.Cms.BookingModule",
+                pattern: "EventBooking/{action}/{contentItemId?}",
+                defaults: new { controller = "EventBooking", action = "Details" }
+            );
+        }
     }
 }
