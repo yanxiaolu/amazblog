@@ -1,12 +1,11 @@
-﻿@page
-@model OrchardCore.Cms.EventModule.ViewModels.EventListViewModel
+﻿@model OrchardCore.Cms.EventModule.ViewModels.EventListViewModel
 @using OrchardCore.Mvc.Utilities // For StringExtensions like HtmlClassify
-@* @{
+@{
     // Ensure Model is not null before accessing its properties
-    ViewData["Title"] = Model?.Events != null && Model.Events.Count > 0
-    ? $"Upcoming Events ({Model.Events.Count})"
-    : "No Events Found";
-} *@
+    ViewData["Title"] = Model != null && Model.Events != null && Model.Events.Count > 0
+        ? $"Upcoming Events ({Model.Events.Count})"
+        : "No Events Found";
+}
 
 <h1>Events</h1>
 

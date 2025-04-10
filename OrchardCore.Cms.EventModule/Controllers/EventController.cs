@@ -34,6 +34,7 @@ public class EventController : Controller
     // Action to display the list page (e.g., at /events)
     public async Task<IActionResult> Index(PagerParameters pagerParameters)
     {
+        // Ensure model is initialized
         var model = new EventListViewModel();
 
         try
@@ -46,9 +47,9 @@ public class EventController : Controller
 
             foreach (var item in allEventContentItems)
             {
-                var eventPart = item.As<EventPart>();
-                var titlePart = item.As<TitlePart>();
-                var autoroutePart = item.As<AutoroutePart>();
+                var eventPart = item.ContentItem.As<EventPart>();
+                var titlePart = item.ContentItem.As<TitlePart>();
+                var autoroutePart = item.ContentItem.As<AutoroutePart>();
 
                 string? bannerUrl = null;
                 if (eventPart?.MediaBanner?.Paths?.Length > 0)
@@ -74,6 +75,7 @@ public class EventController : Controller
             return StatusCode(500, "An unexpected error occurred retrieving event data.");
         }
 
-        return View(model);
+        // Explicitly specify the view name to ensure correct binding
+        return View("Index", model);
     }
 }
