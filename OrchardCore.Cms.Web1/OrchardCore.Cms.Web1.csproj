@@ -24,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\OrchardCore.BookingTheme\OrchardCore.BookingTheme.csproj" />
+      <ProjectReference Include="..\OrchardCore.Cms.EventModule\OrchardCore.Cms.EventModule.csproj" />
     </ItemGroup>
 
 </Project>
