@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AmazBlog.EF\AmazBlog.EF.csproj" />
-    <ProjectReference Include="..\AmazBlog.Shared\AmazBlog.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
