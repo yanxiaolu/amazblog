@@ -1,5 +1,5 @@
 ﻿@model OrchardCore.Cms.EventModule.ViewModels.EventListViewModel
-@using OrchardCore.Mvc.Utilities // For StringExtensions like HtmlClassify
+@using OrchardCore.Mvc.Utilities 
 @{
     // Ensure Model is not null before accessing its properties
     ViewData["Title"] = Model != null && Model.Events != null && Model.Events.Count > 0

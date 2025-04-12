@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Autoroute.Models;
 using OrchardCore.Cms.EventModule.Models;
@@ -34,48 +31,79 @@ public class EventController : Controller
     // Action to display the list page (e.g., at /events)
     public async Task<IActionResult> Index(PagerParameters pagerParameters)
     {
-        // Ensure model is initialized
+        // 初始化模型
         var model = new EventListViewModel();
 
         try
         {
-            // Query content items using ISession and ContentItemIndex
+            // 查询所有已发布的 events 类型内容项
+            // 注意：这里使用 "events" 作为内容类型名称，这应该与您在 Admin UI 中创建的内容类型名称一致
             var allEventContentItems = await _session.Query<ContentItem, ContentItemIndex>(index =>
-                index.ContentType == "event" && index.Published)
+                index.ContentType == "EventsPart" && index.Published)
                 .OrderByDescending(index => index.PublishedUtc)
                 .ListAsync();
 
             foreach (var item in allEventContentItems)
             {
-                var eventPart = item.ContentItem.As<EventPart>();
-                var titlePart = item.ContentItem.As<TitlePart>();
-                var autoroutePart = item.ContentItem.As<AutoroutePart>();
-
+                /*
+                 * ContentItem 的结构解析：
+                 * 
+                 * ContentItem 是一个复合对象，包含多个内容部件 (ContentParts)
+                 * Content 属性是一个 JsonDynamicObject，包含了所有部件的数据
+                 * As<T>() 方法从 Content 中提取并创建指定类型的部件实例
+                 */
+                
+                // 从 ContentItem 中提取各种部件
+                var eventsPart = item.As<EventsPart>();     // 注意这里使用正确的类名 EventsPart
+                var titlePart = item.As<TitlePart>();       // 标题部件，提供标题功能
+                var autoroutePart = item.As<AutoroutePart>(); // 自动路由部件，提供 URL 路径
+                
+                // 调试：查看内容项的完整 JSON 结构，帮助排查字段问题
+                // var json = JsonConvert.SerializeObject(item.Content, Formatting.Indented);
+                // System.Diagnostics.Debug.WriteLine(json);
+                
+                // 获取 DateTimeField 中的日期值的几种方法
+                
+                // 方法1：直接从强类型对象中获取 (推荐方法)
+                DateTime? startDate = eventsPart?.StartTime?.Value; // 正确使用 StartTime 字段
+                DateTime? endDate = eventsPart?.EndTime?.Value;     // 正确使用 EndTime 字段
+                
+                // 方法2：通过动态访问 Content 中的数据
+                // var startDate = item.Content.EventsPart?.StartTime?.Value;
+                
+                // 方法3：如果 JSON 结构中的字段名与模型类中的不一致，可以尝试直接访问原始字段名
+                // var startDate = item.Content["EventsPart"]?["StartDate"]?["Value"]?.ToString();
+                // if (startDate != null) startDate = DateTime.Parse(startDate);
+                
+                // 处理媒体路径，转换为可访问的 URL
                 string? bannerUrl = null;
-                if (eventPart?.MediaBanner?.Paths?.Length > 0)
+                if (eventsPart?.EventBanner?.Paths?.Length > 0) // 正确使用 EventBanner 字段
                 {
-                    var bannerPath = eventPart.MediaBanner.Paths[0];
+                    var bannerPath = eventsPart.EventBanner.Paths[0];
                     bannerUrl = _mediaFileStore.MapPathToPublicUrl(bannerPath);
                 }
 
+                // 创建视图模型
                 model.Events.Add(new EventViewModel
                 {
                     ContentItemId = item.ContentItemId,
-                    Title = titlePart?.Title ?? "[No Title Part]",
-                    StartDate = eventPart?.StartDate?.Value,
-                    EndDate = eventPart?.EndDate?.Value,
-                    Place = eventPart?.EventPlace?.Text,
+                    Title = titlePart?.Title ?? item.DisplayText ?? "[No Title]",
+                    StartDate = startDate, // 使用上面获取的日期值
+                    EndDate = endDate,     // 使用上面获取的日期值
+                    Place = eventsPart?.Location?.Text, // 正确使用 Location 字段
                     BannerUrl = bannerUrl,
                     DetailUrl = autoroutePart?.Path
                 });
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            return StatusCode(500, "An unexpected error occurred retrieving event data.");
+            // 记录异常详情，包含异常信息有助于排查问题
+            System.Diagnostics.Debug.WriteLine($"获取事件数据出错: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"异常详情: {ex}");
+            return StatusCode(500, "在检索事件数据时发生错误。");
         }
 
-        // Explicitly specify the view name to ensure correct binding
         return View("Index", model);
     }
 }
