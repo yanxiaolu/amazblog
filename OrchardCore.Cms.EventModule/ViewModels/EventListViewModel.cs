@@ -1,5 +1,3 @@
-using System;
-
 namespace OrchardCore.Cms.EventModule.ViewModels;
 
 public class EventListViewModel
