@@ -2,25 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
+            "name": "C#: OrchardCore.Cms.Web1 Debug",
+            "type": "dotnet",
             "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/AmazBlog.Console/bin/Debug/net6.0/AmazBlog.Console.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/AmazBlog.Console",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
+            "projectPath": "${workspaceFolder}/OrchardCore.Cms.Web1/OrchardCore.Cms.Web1.csproj"
         },
         {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
+            "name": "C#: EventModule Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/OrchardCore.Cms.EventModule/OrchardCore.Cms.EventModule.csproj"
+        },
+        {
+            "name": "C#: Module1 Debug",
+            "type": "dotnet",
+            "request": "launch", 
+            "projectPath": "${workspaceFolder}/OrchardCore.Cms.Module1/OrchardCore.Cms.Module1.csproj"
         }
     ]
 }
