@@ -1,13 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using OrchardCore.Autoroute.Models;
-using OrchardCore.Cms.EventModule.Models;
-using OrchardCore.Cms.EventModule.ViewModels;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Records;
-using OrchardCore.Media;
 using OrchardCore.Navigation;
-using OrchardCore.Title.Models;
 using YesSql;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System;
+using OrchardCore.Media;
+using OrchardCore.Cms.EventModule.ViewModels;
+using OrchardCore.Cms.EventModule.Models;
+using OrchardCore.Title.Models;
+using OrchardCore.Autoroute.Models;
 
 namespace OrchardCore.Cms.EventModule.Controllers;
 
@@ -95,15 +98,16 @@ public class EventController : Controller
                     DetailUrl = autoroutePart?.Path
                 });
             }
+
+            // 返回包含事件列表的视图
+            return View(model);
         }
         catch (Exception ex)
         {
-            // 记录异常详情，包含异常信息有助于排查问题
-            System.Diagnostics.Debug.WriteLine($"获取事件数据出错: {ex.Message}");
-            System.Diagnostics.Debug.WriteLine($"异常详情: {ex}");
-            return StatusCode(500, "在检索事件数据时发生错误。");
+            // 记录异常
+            System.Diagnostics.Debug.WriteLine($"Error retrieving events: {ex}");
+            // Consider using a proper logging framework instead of Debug.WriteLine
+            return StatusCode(500, "An error occurred while retrieving event data.");
         }
-
-        return View("Index", model);
     }
 }
