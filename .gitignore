@@ -117,3 +117,6 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
+
+# macOS specific files
+.DS_Store
