@@ -23,4 +23,8 @@
     <PackageReference Include="OrchardCore.Title" Version="2.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Drivers\" />
+  </ItemGroup>
+
 </Project>

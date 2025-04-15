@@ -1,8 +1,6 @@
 using OrchardCore.ContentManagement;
 using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Descriptors;
-using OrchardCore.DisplayManagement.Shapes;
-using System.Threading.Tasks;
 
 namespace OrchardCore.Cms.EventModule
 {
@@ -68,19 +66,19 @@ namespace OrchardCore.Cms.EventModule
                     // This might be necessary depending on how the shape was constructed.
                     else if (displaying.Shape.TryGetProperty("Model", out dynamic model) && model?.ContentItem is ContentItem modelContentItem)
                     {
-                         contentItem = modelContentItem;
-                         // Add alternate based on the part name itself
-                         // Format: [PartName]__[ContentType]
-                         displaying.Shape.Metadata.Alternates.Add($"EventsPart__{contentItem.ContentType}");
+                        contentItem = modelContentItem;
+                        // Add alternate based on the part name itself
+                        // Format: [PartName]__[ContentType]
+                        displaying.Shape.Metadata.Alternates.Add($"EventsPart__{contentItem.ContentType}");
 
-                         // Get display type if available (might be on Model or Shape)
-                         string displayType = model?.DisplayType ?? displaying.Shape.Metadata?.DisplayType;
-                         if (!string.IsNullOrEmpty(displayType))
-                         {
-                             // Add alternate based on display type and content type
-                             // Format: [PartName]_[DisplayType]__[ContentType]
-                             displaying.Shape.Metadata.Alternates.Add($"EventsPart_{displayType}__{contentItem.ContentType}");
-                         }
+                        // Get display type if available (might be on Model or Shape)
+                        string displayType = model?.DisplayType ?? displaying.Shape.Metadata?.DisplayType;
+                        if (!string.IsNullOrEmpty(displayType))
+                        {
+                            // Add alternate based on display type and content type
+                            // Format: [PartName]_[DisplayType]__[ContentType]
+                            displaying.Shape.Metadata.Alternates.Add($"EventsPart_{displayType}__{contentItem.ContentType}");
+                        }
                     }
                 });
 
