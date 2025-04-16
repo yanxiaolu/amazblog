@@ -1,0 +1,211 @@
+/* --- Base & Typography --- */
+body.theme-apple {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f5f5f7;
+    /* Light gray background */
+    color: #1d1d1f;
+    /* Dark gray text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    /* Slightly bolder headings */
+    color: #000;
+    /* Black headings */
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+a {
+    color: #0066cc;
+    /* Apple blue link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Layout & Spacing --- */
+.site-header {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent white */
+    backdrop-filter: saturate(180%) blur(20px);
+    padding: 0 20px;
+    border-bottom: 1px solid #d2d2d7;
+    position: sticky;
+    /* Sticky header */
+    top: 0;
+    z-index: 10;
+}
+
+.main-nav {
+    max-width: 980px;
+    /* Typical content width */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Adjust as needed */
+    height: 48px;
+    /* Apple header height */
+}
+
+.main-nav a {
+    color: #333;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 48px;
+}
+
+.main-nav a.logo {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.main-nav a:hover {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+
+.site-content {
+    max-width: 980px;
+    margin: 40px auto;
+    /* Top margin + auto horizontal centering */
+    padding: 0 20px;
+}
+
+.site-footer {
+    max-width: 980px;
+    margin: 60px auto 40px auto;
+    padding: 20px 20px 0 20px;
+    border-top: 1px solid #d2d2d7;
+    text-align: center;
+    font-size: 12px;
+    color: #6e6e73;
+    /* Lighter gray for footer */
+}
+
+.site-footer p {
+    margin-bottom: 0.5em;
+}
+
+/* --- Event List Specific Styles --- */
+.event-list-container .page-title {
+    font-size: 32px;
+    /* Larger page title */
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    /* Center title */
+    color: #000;
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    /* Use grid for layout */
+    gap: 30px;
+    /* Spacing between items */
+    /* Responsive grid columns */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.event-item {
+    background-color: #fff;
+    /* White background for cards */
+    border-radius: 18px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* Clip content like image */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* Subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.event-item:hover {
+    transform: translateY(-5px);
+    /* Slight lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.event-link {
+    display: block;
+    /* Make the link fill the item */
+    color: inherit;
+    /* Inherit text color */
+    text-decoration: none;
+}
+
+.event-link:hover {
+    text-decoration: none;
+    /* No underline on card hover */
+}
+
+.event-banner-wrapper {
+    /* Optional: if you want a fixed aspect ratio */
+    /* aspect-ratio: 16 / 9; */
+    /* overflow: hidden; */
+}
+
+.event-banner {
+    width: 100%;
+    /* object-fit: cover; */
+    /* Uncomment if using aspect-ratio */
+    /* height: 100%; */
+    /* Uncomment if using aspect-ratio */
+    border-bottom: 1px solid #eee;
+    /* Subtle separator */
+}
+
+.event-details {
+    padding: 20px 25px 25px 25px;
+    /* Generous padding */
+}
+
+.event-title {
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #1d1d1f;
+}
+
+.event-date {
+    font-size: 14px;
+    color: #6e6e73;
+    /* Lighter gray for date/location */
+    margin-bottom: 4px;
+}
+
+.event-location {
+    font-size: 14px;
+    color: #6e6e73;
+    margin-bottom: 0;
+}
+
+.no-events-message {
+    text-align: center;
+    color: #6e6e73;
+    font-size: 16px;
+    padding: 40px 0;
+}
