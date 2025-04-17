@@ -1,0 +1,56 @@
+﻿@model OrchardCore.Cms.EventModule.ViewModels.EventListViewModel
+@using OrchardCore.Mvc.Utilities
+
+
+<div class="event-list-container">
+    <h1 class="page-title">Upcoming Events</h1>
+
+    @if (Model.Events.Any())
+    {
+        <ul class="event-list">
+            @foreach (var eventItem in Model.Events) // Renamed loop variable for clarity
+            {
+                <li class="event-item">
+                    @* Use Url.Content to generate application-relative URLs *@
+                    <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link">
+                        @if (!string.IsNullOrEmpty(eventItem.BannerUrl))
+                        {
+                            <div class="event-banner-wrapper">
+                                <img
+                                    src="@eventItem.BannerUrl" @* BannerUrl should be the public URL *@
+                                    alt="@eventItem.Title"
+                                    class="event-banner"
+                                    width="600"
+                                    height="400" />
+                            </div>
+                        }
+                        <div class="event-details">
+                            <h2 class="event-title">@eventItem.Title</h2>
+                            <p class="event-date">
+                                @* Check if StartDate has a value before formatting *@
+                                @if (eventItem.StartDate.HasValue)
+                                {
+                                    @eventItem.StartDate.Value.ToString("MMMM dd, yyyy")
+                                }
+                                @* Check if EndDate has a value and is different from StartDate *@
+                                @if (eventItem.EndDate.HasValue && eventItem.EndDate != eventItem.StartDate)
+                                {
+                                    <span> – @eventItem.EndDate.Value.ToString("MMMM dd, yyyy")</span>
+                                }
+                            </p>
+                            @* Check if Place is not null or empty *@
+                            @if (!string.IsNullOrEmpty(eventItem.Place))
+                            {
+                                <p class="event-location">@eventItem.Place</p>
+                            }
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p class="no-events-message">Check back soon for upcoming events.</p>
+    }
+</div>
