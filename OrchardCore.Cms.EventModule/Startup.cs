@@ -3,13 +3,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Cms.EventModule.Models;
 using OrchardCore.ContentManagement;
-using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.DisplayManagement.Descriptors;
 using OrchardCore.Modules;
-using OrchardCore.ContentManagement.Display.Models;
-using OrchardCore.DisplayManagement.ModelBinding;
-using OrchardCore.DisplayManagement.Views;
-using OrchardCore.Cms.EventModule.ViewModels;
 
 namespace OrchardCore.Cms.EventModule;
 
