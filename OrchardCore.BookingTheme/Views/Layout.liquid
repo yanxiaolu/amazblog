@@ -2,46 +2,51 @@
 <html lang="{{ Culture.Name }}">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{% page_title Site.SiteName, position: "before", separator: " | " %}</title>
-    {% comment %} 请求加载 Apple Style CSS {% endcomment %}
+
+    {% comment %} Load Apple Style CSS (which now depends on Bootstrap) {% endcomment %}
     {% style name:"bookingtheme-apple-style" %}
-    {% comment %} 主题 CSS {% endcomment %}
 
     {% resources type: "Meta" %}
     {% resources type: "HeadLink" %}
     {% resources type: "Stylesheet" %}
     {% resources type: "HeadScript" %}
 
-    {% comment %} Google Fonts (Optional, for Apple-like font)  {% endcomment %}
+    {% comment %} Google Fonts (Optional, for Apple-like font) {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    {% comment %} Header area end  {% endcomment %}
   </head>
   <body class="theme-apple" dir="{{ Culture.Dir }}">
-    <header class="site-header">
-      <nav class="main-nav">
-        <a href="/" class="logo">{{ Site.SiteName | default: 'Events' }}</a>
-        <a href="/events">Events</a>
+
+    {% comment %} Use Bootstrap navbar structure and sticky-top {% endcomment %}
+    <header class="site-header sticky-top border-bottom">
+      <nav class="main-nav navbar navbar-expand navbar-light container-lg"> 
+        <a class="navbar-brand logo" href="/">{{ Site.SiteName | default: 'Events' }}</a>
+        <div class="navbar-nav ml-auto"> 
+           <a class="nav-item nav-link" href="/events">Events</a>
+        </div>
       </nav>
     </header>
 
-    <main class="site-content">
+    {% comment %} Use Bootstrap container and spacing {% endcomment %}
+    <main class="site-content container-lg mt-4 mb-5"> 
       {% render_body %}
     </main>
 
-    <footer class="site-footer">
-      {# --- foot Style CSS --- #}
-      <p>
+    {% comment %} Use Bootstrap container, spacing, and text utilities {% endcomment %}
+    <footer class="site-footer container-lg pt-4 pb-4 mt-5 border-top text-center small text-muted"> 
+      <p class="mb-1"> 
         &copy; {{ 'now' | date: '%Y' }}
         {{ Site.SiteName }}. All rights reserved.
       </p>
       {% render_section "Footer", required: false %}
     </footer>
+
+    {% comment %} Load foot scripts, potentially including Bootstrap JS if needed {% endcomment %}
+    {% comment %} {% script name:"bootstrap" %} {% endcomment %}
     {% resources type: "FootScript" %}
   </body>
 </html>

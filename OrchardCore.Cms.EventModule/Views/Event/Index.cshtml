@@ -1,56 +1,56 @@
 ﻿@model OrchardCore.Cms.EventModule.ViewModels.EventListViewModel
 @using OrchardCore.Mvc.Utilities
 
+@{
+    // Define column classes for responsiveness
+    // Change col-lg-4 to col-lg-6 for 2 columns on large screens and up
+    string columnClass = "col-md-6 col-lg-6";
+}
 
 <div class="event-list-container">
-    <h1 class="page-title">Upcoming Events</h1>
+    <h1 class="page-title display-4 font-weight-semibold text-center mb-4 mb-md-5">Upcoming Events</h1> @* Use Bootstrap display, font-weight, text, and margin utils *@
 
     @if (Model.Events.Any())
     {
-        <ul class="event-list">
-            @foreach (var eventItem in Model.Events) // Renamed loop variable for clarity
+        <div class="event-list row"> @* Use Bootstrap row for the grid *@
+            @foreach (var eventItem in Model.Events)
             {
-                <li class="event-item">
-                    @* Use Url.Content to generate application-relative URLs *@
-                    <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link">
+                <div class="event-item-wrapper mb-4 @columnClass"> @* Grid column with bottom margin *@
+                    <div class="event-item card h-100 shadow-sm"> @* Use Bootstrap card, full height, and shadow utility *@
+                        <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link stretched-link"></a> @* Stretched-link makes the whole card clickable *@
                         @if (!string.IsNullOrEmpty(eventItem.BannerUrl))
                         {
-                            <div class="event-banner-wrapper">
-                                <img
-                                    src="@eventItem.BannerUrl" @* BannerUrl should be the public URL *@
-                                    alt="@eventItem.Title"
-                                    class="event-banner"
-                                    width="600"
-                                    height="400" />
-                            </div>
+                            @* Use card-img-top for the banner *@
+                            <img src="@eventItem.BannerUrl"
+                                 alt="@eventItem.Title"
+                                 class="event-banner card-img-top"
+                                 width="600" @* Keep width/height for aspect ratio hint before CSS loads *@
+                                 height="400" />
                         }
-                        <div class="event-details">
-                            <h2 class="event-title">@eventItem.Title</h2>
-                            <p class="event-date">
-                                @* Check if StartDate has a value before formatting *@
+                        <div class="event-details card-body d-flex flex-column"> @* Use card-body and flex for alignment *@
+                            <h2 class="event-title card-title h5 font-weight-semibold mb-2">@eventItem.Title</h2> @* Use card-title, h5, font-weight, margin utils *@
+                            <p class="event-date card-text small text-muted mb-1"> @* Use card-text, small, text-muted, margin utils *@
                                 @if (eventItem.StartDate.HasValue)
                                 {
                                     @eventItem.StartDate.Value.ToString("MMMM dd, yyyy")
                                 }
-                                @* Check if EndDate has a value and is different from StartDate *@
                                 @if (eventItem.EndDate.HasValue && eventItem.EndDate != eventItem.StartDate)
                                 {
                                     <span> – @eventItem.EndDate.Value.ToString("MMMM dd, yyyy")</span>
                                 }
                             </p>
-                            @* Check if Place is not null or empty *@
                             @if (!string.IsNullOrEmpty(eventItem.Place))
                             {
-                                <p class="event-location">@eventItem.Place</p>
+                                <p class="event-location card-text small text-muted mt-auto pt-2">@eventItem.Place</p> @* Push location to bottom if dates are short *@
                             }
                         </div>
-                    </a>
-                </li>
+                    </div> @* End card *@
+                </div> @* End column *@
             }
-        </ul>
+        </div> @* End row *@
     }
     else
     {
-        <p class="no-events-message">Check back soon for upcoming events.</p>
+        <p class="no-events-message text-center text-muted py-5">Check back soon for upcoming events.</p> @* Use Bootstrap text and padding utils *@
     }
 </div>
