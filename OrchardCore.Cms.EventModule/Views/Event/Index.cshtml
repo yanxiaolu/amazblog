@@ -8,49 +8,49 @@
 }
 
 <div class="event-list-container">
-    <h1 class="page-title display-4 font-weight-semibold text-center mb-4 mb-md-5">Upcoming Events</h1> @* Use Bootstrap display, font-weight, text, and margin utils *@
+    <h1 class="page-title display-4 font-weight-semibold text-center mb-4 mb-md-5">正在上演</h1> 
+    @* Use Bootstrap display, f
+    o   nt-weight, text, and margin utils *@
 
-    @if (Model.Events.Any())
-    {
-        <div class="event-list row"> @* Use Bootstrap row for the grid *@
-            @foreach (var eventItem in Model.Events)
-            {
-                <div class="event-item-wrapper mb-4 @columnClass"> @* Grid column with bottom margin *@
-                    <div class="event-item card h-100 shadow-sm"> @* Use Bootstrap card, full height, and shadow utility *@
-                        <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link stretched-link"></a> @* Stretched-link makes the whole card clickable *@
-                        @if (!string.IsNullOrEmpty(eventItem.BannerUrl))
-                        {
-                            @* Use card-img-top for the banner *@
-                            <img src="@eventItem.BannerUrl"
-                                 alt="@eventItem.Title"
-                                 class="event-banner card-img-top"
-                                 width="600" @* Keep width/height for aspect ratio hint before CSS loads *@
-                                 height="400" />
-                        }
-                        <div class="event-details card-body d-flex flex-column"> @* Use card-body and flex for alignment *@
-                            <h2 class="event-title card-title h5 font-weight-semibold mb-2">@eventItem.Title</h2> @* Use card-title, h5, font-weight, margin utils *@
-                            <p class="event-date card-text small text-muted mb-1"> @* Use card-text, small, text-muted, margin utils *@
-                                @if (eventItem.StartDate.HasValue)
-                                {
-                                    @eventItem.StartDate.Value.ToString("MMMM dd, yyyy")
-                                }
-                                @if (eventItem.EndDate.HasValue && eventItem.EndDate != eventItem.StartDate)
-                                {
-                                    <span> – @eventItem.EndDate.Value.ToString("MMMM dd, yyyy")</span>
-                                }
-                            </p>
-                            @if (!string.IsNullOrEmpty(eventItem.Place))
+        @if (Model.Events.Any())
+        {
+            <div class="event-list row"> @* Use Bootstrap row for the grid *@
+                @foreach (var eventItem in Model.Events)
+                {
+                    <div class="event-item-wrapper mb-4 @columnClass"> @* Grid column with bottom margin *@
+                        <div class="event-item card h-100 shadow-sm"> @* Use Bootstrap card, full height, and shadow utility *@
+                            <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link stretched-link"></a> @* Stretched-link makes the whole card clickable *@
+                            @if (!string.IsNullOrEmpty(eventItem.BannerUrl))
                             {
-                                <p class="event-location card-text small text-muted mt-auto pt-2">@eventItem.Place</p> @* Push location to bottom if dates are short *@
+                                @* Use card-img-top for the banner *@
+                                <img src="@eventItem.BannerUrl" alt="@eventItem.Title" class="event-banner card-img-top" width="600"
+                                    @* Keep width/height for aspect ratio hint before CSS loads *@
+                                   height="400" />
                             }
-                        </div>
-                    </div> @* End card *@
-                </div> @* End column *@
-            }
-        </div> @* End row *@
-    }
-    else
-    {
-        <p class="no-events-message text-center text-muted py-5">Check back soon for upcoming events.</p> @* Use Bootstrap text and padding utils *@
-    }
+                            <div class="event-details card-body d-flex flex-column"> @* Use card-body and flex for alignment *@
+                                <h2 class="event-title card-title h5 font-weight-semibold mb-2">@eventItem.Title</h2> @* Use card-title, h5, font-weight, margin utils *@
+                                <p class="event-date card-text small text-muted mb-1"> @* Use card-text, small, text-muted, margin utils *@
+                                    @if (eventItem.StartDate.HasValue)
+                                    {
+                                        @eventItem.StartDate.Value.ToString("MMMM dd, yyyy")
+                                    }
+                                    @if (eventItem.EndDate.HasValue && eventItem.EndDate != eventItem.StartDate)
+                                    {
+                                        <span> – @eventItem.EndDate.Value.ToString("MMMM dd, yyyy")</span>
+                                    }
+                                </p>
+                                @if (!string.IsNullOrEmpty(eventItem.Place))
+                                {
+                                    <p class="event-location card-text small text-muted mt-auto pt-2">@eventItem.Place</p> @* Push location to bottom if dates are short *@
+                                }
+                            </div>
+                        </div> @* End card *@
+                    </div> @* End column *@
+                }
+            </div> @* End row *@
+        }
+        else
+        {
+            <p class="no-events-message text-center text-muted py-5">Check back soon for upcoming events.</p> @* Use Bootstrap text and padding utils *@
+        }
 </div>
