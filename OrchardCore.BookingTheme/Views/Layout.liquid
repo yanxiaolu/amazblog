@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>{% page_title Site.SiteName, position: "before", separator: " | " %}</title>
 
-    {% comment %} Load Apple Style CSS (which now depends on Bootstrap) {% endcomment %}
+    {% comment %} 加载 Apple 样式 CSS (现在依赖于 Bootstrap) {% endcomment %}
     {% style name:"bookingtheme-apple-style" %}
 
     {% resources type: "Meta" %}
@@ -13,7 +13,7 @@
     {% resources type: "Stylesheet" %}
     {% resources type: "HeadScript" %}
 
-    {% comment %} Google Fonts (Optional, for Apple-like font) {% endcomment %}
+    {% comment %} Google Fonts (可选, 用于 Apple 风格字体) {% endcomment %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
   </head>
   <body class="theme-apple" dir="{{ Culture.Dir }}">
 
-    {% comment %} Use Bootstrap navbar structure and sticky-top {% endcomment %}
+    {% comment %} 使用 Bootstrap navbar 结构和 sticky-top {% endcomment %}
     <header class="site-header sticky-top border-bottom">
       <nav class="main-nav navbar navbar-expand navbar-light container-lg"> 
         <a class="navbar-brand logo" href="/">{{ Site.SiteName | default: 'Events' }}</a>
@@ -31,12 +31,12 @@
       </nav>
     </header>
 
-    {% comment %} Use Bootstrap container and spacing {% endcomment %}
+    {% comment %} 使用 Bootstrap container 和间距 {% endcomment %}
     <main class="site-content container-lg mt-4 mb-5"> 
       {% render_body %}
     </main>
 
-    {% comment %} Use Bootstrap container, spacing, and text utilities {% endcomment %}
+    {% comment %} 使用 Bootstrap container、间距和文本工具类 {% endcomment %}
     <footer class="site-footer container-lg pt-4 pb-4 mt-5 border-top text-center small text-muted"> 
       <p class="mb-1"> 
         &copy; {{ 'now' | date: '%Y' }}
@@ -45,7 +45,7 @@
       {% render_section "Footer", required: false %}
     </footer>
 
-    {% comment %} Load foot scripts, potentially including Bootstrap JS if needed {% endcomment %}
+    {% comment %} 加载页脚脚本, 如果需要，可能包含 Bootstrap JS {% endcomment %}
     {% comment %} {% script name:"bootstrap" %} {% endcomment %}
     {% resources type: "FootScript" %}
   </body>
