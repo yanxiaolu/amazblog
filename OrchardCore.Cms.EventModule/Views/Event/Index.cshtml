@@ -2,34 +2,33 @@
 @using OrchardCore.Mvc.Utilities
 
 @{
-    // Define column classes for responsiveness
-    // Change col-lg-4 to col-lg-6 for 2 columns on large screens and up
+    // 定义响应式列类
+    // 将 col-lg-4 更改为 col-lg-6，以便在大屏幕及以上设备上每行显示 2 列
     string columnClass = "col-md-6 col-lg-6";
 }
 
 <div class="event-list-container">
     <h1 class="page-title display-4 font-weight-semibold text-center mb-4 mb-md-5">正在上演</h1> 
-    @* Use Bootstrap display, f
-    o   nt-weight, text, and margin utils *@
+    @* 使用 Bootstrap 的 display、font-weight、text 和 margin 工具类 *@
 
         @if (Model.Events.Any())
         {
-            <div class="event-list row"> @* Use Bootstrap row for the grid *@
+            <div class="event-list row"> @* 使用 Bootstrap row 作为网格 *@
                 @foreach (var eventItem in Model.Events)
                 {
-                    <div class="event-item-wrapper mb-4 @columnClass"> @* Grid column with bottom margin *@
-                        <div class="event-item card h-100 shadow-sm"> @* Use Bootstrap card, full height, and shadow utility *@
-                            <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link stretched-link"></a> @* Stretched-link makes the whole card clickable *@
+                    <div class="event-item-wrapper mb-4 @columnClass"> @* 带下边距的网格列 *@
+                        <div class="event-item card h-100 shadow-sm"> @* 使用 Bootstrap card、全高和阴影工具类 *@
+                            <a href="@Url.Content("~/" + eventItem.DetailUrl)" class="event-link stretched-link"></a> @* stretched-link 使整个卡片可点击 *@
                             @if (!string.IsNullOrEmpty(eventItem.BannerUrl))
                             {
-                                @* Use card-img-top for the banner *@
+                                @* 使用 card-img-top 作为横幅 *@
                                 <img src="@eventItem.BannerUrl" alt="@eventItem.Title" class="event-banner card-img-top" width="600"
-                                    @* Keep width/height for aspect ratio hint before CSS loads *@
+                                    @* 保留 width/height 以便在 CSS 加载前提示宽高比 *@
                                    height="400" />
                             }
-                            <div class="event-details card-body d-flex flex-column"> @* Use card-body and flex for alignment *@
-                                <h2 class="event-title card-title h5 font-weight-semibold mb-2">@eventItem.Title</h2> @* Use card-title, h5, font-weight, margin utils *@
-                                <p class="event-date card-text small text-muted mb-1"> @* Use card-text, small, text-muted, margin utils *@
+                            <div class="event-details card-body d-flex flex-column"> @* 使用 card-body 和 flex 进行对齐 *@
+                                <h2 class="event-title card-title h5 font-weight-semibold mb-2">@eventItem.Title</h2> @* 使用 card-title、h5、font-weight、margin 工具类 *@
+                                <p class="event-date card-text small text-muted mb-1"> @* 使用 card-text、small、text-muted、margin 工具类 *@
                                     @if (eventItem.StartDate.HasValue)
                                     {
                                         @eventItem.StartDate.Value.ToString("MMMM dd, yyyy")
@@ -41,16 +40,16 @@
                                 </p>
                                 @if (!string.IsNullOrEmpty(eventItem.Place))
                                 {
-                                    <p class="event-location card-text small text-muted mt-auto pt-2">@eventItem.Place</p> @* Push location to bottom if dates are short *@
+                                    <p class="event-location card-text small text-muted mt-auto pt-2">@eventItem.Place</p> @* 如果日期较短，将地点推到底部 *@
                                 }
                             </div>
-                        </div> @* End card *@
-                    </div> @* End column *@
+                        </div> @* 结束 card *@
+                    </div> @* 结束 column *@
                 }
-            </div> @* End row *@
+            </div> @* 结束 row *@
         }
         else
         {
-            <p class="no-events-message text-center text-muted py-5">Check back soon for upcoming events.</p> @* Use Bootstrap text and padding utils *@
+            <p class="no-events-message text-center text-muted py-5">Check back soon for upcoming events.</p> @* 使用 Bootstrap text 和 padding 工具类 *@
         }
 </div>
