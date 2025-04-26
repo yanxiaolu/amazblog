@@ -2,22 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: OrchardCore.Cms.Web1 Debug",
+            "name": "OrchardBooking.Web",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/OrchardCore.Cms.Web1/OrchardCore.Cms.Web1.csproj"
-        },
-        {
-            "name": "C#: EventModule Debug",
-            "type": "dotnet",
-            "request": "launch",
-            "projectPath": "${workspaceFolder}/OrchardCore.Cms.EventModule/OrchardCore.Cms.EventModule.csproj"
-        },
-        {
-            "name": "C#: Module1 Debug",
-            "type": "dotnet",
-            "request": "launch", 
-            "projectPath": "${workspaceFolder}/OrchardCore.Cms.Module1/OrchardCore.Cms.Module1.csproj"
+            "project": "${workspaceFolder}/OrchardBooking.Web/OrchardBooking.Web.csproj",
+            "launchBrowser": true,
+            "applicationUrl": "https://localhost:5001;http://localhost:5000",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
         }
     ]
 }
