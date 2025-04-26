@@ -11,11 +11,15 @@
 			]
 		}
 	},
-	// "portsAttributes": {
-	//		"5001": {
-	//			"protocol": "https"
-	//		}
-	// }
+	"remoteEnv": {
+		"ASPNETCORE_Kestrel__Certificates__Default__Password": "SecurePwdGoesHere",
+		"ASPNETCORE_Kestrel__Certificates__Default__Path": "${containerEnv:HOME}/.aspnet/https/aspnetapp.pfx"
+	},
+	"portsAttributes": {
+		"5001": {
+			"protocol": "https"
+		}
+	},
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "dotnet restore"
 	// Configure tool-specific properties.
