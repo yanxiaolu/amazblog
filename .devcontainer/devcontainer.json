@@ -18,6 +18,9 @@
 	"portsAttributes": {
 		"5001": {
 			"protocol": "https"
+		},
+		"5000": {
+			"protocol": "http"
 		}
 	},
 	// Use 'postCreateCommand' to run commands after the container is created.
