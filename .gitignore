@@ -42,8 +42,6 @@ appsettings.*.json
 *.db-shm
 *.db-wal
 
-# Entity Framework Core migrations
-Migrations/
 
 # Publish output
 publish/
