@@ -1,0 +1,121 @@
+{
+  "ContentTypeDefinitionRecords": [
+    {
+      "Name": "Event",
+      "DisplayName": "Event",
+      "Settings": {
+        "ContentTypeSettings": {
+          "Creatable": true,
+          "Listable": true,
+          "Draftable": true,
+          "Versionable": true,
+          "Securable": true,
+          "Description": "\u4EE3\u8868\u4E00\u4E2A\u53EF\u4EE5\u5B89\u6392\u7684\u4E8B\u4EF6\uFF0C\u4F7F\u7528\u5185\u7F6E\u90E8\u4EF6\u548C\u5B57\u6BB5\u3002"
+        }
+      },
+      "ContentTypePartDefinitionRecords": [
+        {
+          "PartName": "TitlePart",
+          "Name": "TitlePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "\u6D3B\u52A8\u540D\u79F0"
+            },
+            "TitlePartSettings": {
+              "Options": 3,
+              "RenderTitle": true
+            }
+          }
+        },
+        {
+          "PartName": "EventDateTimePart",
+          "Name": "EventDateTimePart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "\u4E8B\u4EF6\u65E5\u671F\u548C\u65F6\u95F4"
+            }
+          }
+        },
+        {
+          "PartName": "HtmlBodyPart",
+          "Name": "HtmlBodyPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "\u6D3B\u52A8\u63CF\u8FF0",
+              "Description": "\u6D3B\u52A8\u5185\u5BB9\u6982\u8FF0",
+              "Editor": "Wysiwyg"
+            }
+          }
+        },
+        {
+          "PartName": "EventCoverPicPart",
+          "Name": "EventCoverPicPart",
+          "Settings": {
+            "ContentTypePartSettings": {
+              "DisplayName": "\u6D3B\u52A8\u5C01\u9762",
+              "Description": "\u6D3B\u52A8\u5C01\u9762"
+            }
+          }
+        },
+        {
+          "PartName": "AutoroutePart",
+          "Name": "AutoroutePart",
+          "Settings": {
+            "AutoroutePartSettings": {
+              "AllowCustomPath": false,
+              "Pattern": "EventDetail/{{ ContentItem.DisplayText | slugify }}",
+              "ShowHomepageOption": false,
+              "AllowUpdatePath": false,
+              "AllowDisabled": false,
+              "AllowRouteContainedItems": false,
+              "ManageContainedItemRoutes": false,
+              "AllowAbsolutePath": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "ContentPartDefinitionRecords": [
+    {
+      "Name": "EventDateTimePart",
+      "Settings": {
+        "ContentPartSettings": {
+          "Attachable": false,
+          "Reusable": false,
+          "Description": "\u4E8B\u4EF6\u65E5\u671F\u548C\u65F6\u95F4"
+        }
+      },
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "DateTimeField",
+          "Name": "EventDateTime",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "\u4E8B\u4EF6\u65E5\u671F\u548C\u65F6\u95F4",
+              "Description": "\u4E8B\u4EF6\u53D1\u751F\u7684\u65E5\u671F\u548C\u65F6\u95F4\u3002",
+              "Editor": "DateTime"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Name": "EventCoverPicPart",
+      "Settings": {},
+      "ContentPartFieldDefinitionRecords": [
+        {
+          "FieldName": "MediaField",
+          "Name": "ImageUrl",
+          "Settings": {
+            "ContentPartFieldSettings": {
+              "DisplayName": "Event Cover Pic",
+              "Description": "\u4E0A\u4F20\u6D3B\u52A8\u5C01\u9762\u56FE\u7247"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "Identifier": "4mr3tqkn406606kbp0ze0sw0x9"
+}

@@ -6,6 +6,18 @@
             "type": "dotnet",
             "request": "launch",
             "projectPath": "${workspaceFolder}/OrchardBooking.Web/OrchardBooking.Web.csproj"
+        },
+        {
+            "name": ".NET Watch",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/OrchardBooking.Web/OrchardBooking.Web.csproj",
+            "launchBrowser": true,
+            "launchUrl": "https://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "preLaunchTask": "watch"
         }
     ]
 }

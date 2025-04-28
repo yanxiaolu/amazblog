@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/AmazBlog.Console/AmazBlog.Console.csproj",
+                "${workspaceFolder}/OrchardBooking.Web/OrchardBooking.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/AmazBlog.Console/AmazBlog.Console.csproj",
+                "${workspaceFolder}/OrchardBooking.Web/OrchardBooking.Web.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/AmazBlog.Console/AmazBlog.Console.csproj"
+                "${workspaceFolder}/OrchardBooking.Web/OrchardBooking.Web.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
